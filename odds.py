@@ -49,13 +49,15 @@ for i in range(len(response)):
             elif response[i]['bookmakers'][j]['markets'][1]['outcomes'][1]['name'] == favorite and response[i]['bookmakers'][j]['markets'][1]['outcomes'][1]['point'] == -1.5:
                 fav_sum += response[i]['bookmakers'][j]['markets'][1]['outcomes'][1]['price']
                 num_books += 1
-
-    spread_consensus = fav_sum / num_books
-    ml_implied = (1 / fav_odds) * 100
-    spread_implied = (1 / spread_consensus) * 100
-    diff = ml_implied - spread_implied
-    diff = round(diff, 2)
-    print(favorite + ":", str(diff) + "%")
+    if num_books == 0:
+	    print("odds not available for", first_team, "vs", second_team)
+    else:
+        spread_consensus = fav_sum / num_books
+        ml_implied = (1 / fav_odds) * 100
+        spread_implied = (1 / spread_consensus) * 100
+        diff = ml_implied - spread_implied
+        diff = round(diff, 2)
+        print(favorite + ":", str(diff) + "%")
 # issues:
 # so many variables, not readable
 # some games do not have consensus on favorite (how often does this happen?)
