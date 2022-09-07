@@ -60,6 +60,5 @@ for i in range(len(response)):
         print(favorite + ":", str(diff) + "%")
 # issues:
 # so many variables, not readable
-# some games do not have consensus on favorite (how often does this happen?)
+# for some games, -1.5 favorite is different than ML favorite. has something to do with home/away hitting in top/bottom of inning
 # cannot control dates for odds, getting matchups that have odds from the next day (need new api most likely lol)
-# use pandas and graphs to show best performes ATS
